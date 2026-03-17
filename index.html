@@ -98,16 +98,12 @@
         
         body[dir="ltr"] .language-switcher {
             left: auto;
-            right: 0;
+            right: 10px;
         }
         
         .language-switcher:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        }
-        
-        .language-switcher i {
-            font-size: 1rem;
         }
         
         .logo {
@@ -147,17 +143,14 @@
             margin-bottom: 1.5rem;
         }
         
-        body[dir="rtl"] .input-group {
-            text-align: right;
-        }
-        
-        body[dir="ltr"] .input-group {
-            text-align: left;
-        }
-        
         .input-container {
             position: relative;
             margin-bottom: 1.2rem;
+            text-align: right;
+        }
+        
+        body[dir="ltr"] .input-container {
+            text-align: left;
         }
         
         .input-container label {
@@ -166,34 +159,6 @@
             font-weight: 500;
             color: var(--primary-color);
             font-size: 1rem;
-        }
-        
-        body[dir="rtl"] .input-container label {
-            text-align: right;
-            padding-right: 1.8rem;
-            padding-left: 0;
-        }
-        
-        body[dir="ltr"] .input-container label {
-            text-align: left;
-            padding-left: 1.8rem;
-            padding-right: 0;
-        }
-        
-
-        
-        body[dir="rtl"] .input-container.ar-label::after {
-            right: 0;
-            left: auto;
-        }
-        
-        body[dir="ltr"] .input-container.ar-label::after {
-            left: 0;
-            right: auto;
-        }
-        
-        .input-container.ar-label:hover::after {
-            width: 100%;
         }
         
         input {
@@ -206,16 +171,7 @@
             background-color: var(--light-gray);
             transition: var(--transition);
             box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-        
-        body[dir="rtl"] #nameInputAr,
-        body[dir="ltr"] #nameInputEn {
-            text-align: right;
-        }
-        
-        body[dir="rtl"] #nameInputEn,
-        body[dir="ltr"] #nameInputAr {
-            text-align: left;
+            text-align: inherit;
         }
         
         input:focus {
@@ -223,11 +179,6 @@
             outline: none;
             background-color: #efdece;
             box-shadow: 0 0 0 3px rgba(101, 44, 145, 0.2);
-        }
-        
-        input::placeholder {
-            color: #999;
-            opacity: 1;
         }
         
         .button-container {
@@ -256,10 +207,6 @@
         button:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(231, 76, 60, 0.4);
-        }
-        
-        button:active {
-            transform: translateY(0);
         }
         
         .loading {
@@ -318,17 +265,6 @@
             transition: var(--transition);
         }
         
-        canvas:hover {
-            transform: scale(1.02);
-        }
-        
-        .download-share-container {
-            display: none;
-            flex-direction: column;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        
         #downloadButton {
             padding: 1rem 2rem;
             background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
@@ -346,28 +282,12 @@
             gap: 0.5rem;
         }
         
-        #downloadButton:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(101, 44, 145, 0.4);
-        }
-        
-        .share-section {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-        
-        .share-title {
-            font-size: 1rem;
-            color: var(--text-color);
-            margin-bottom: 0.5rem;
-        }
-        
         .social-share {
             display: flex;
             justify-content: center;
             gap: 1rem;
             flex-wrap: wrap;
+            margin-top: 1rem;
         }
         
         .social-btn {
@@ -380,55 +300,13 @@
             color: white;
             font-size: 1.5rem;
             transition: var(--transition);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-decoration: none;
-        }
-        
-        .social-btn:hover {
-            transform: translateY(-3px) scale(1.1);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
         
         .twitter { background-color: var(--twitter-color); }
         .whatsapp { background-color: var(--whatsapp-color); }
         .facebook { background-color: var(--facebook-color); }
         .telegram { background-color: var(--telegram-color); }
-        
-        /* إضافة أنماط للوضع الإنجليزي */
-        body[dir="ltr"] {
-            text-align: left;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 1.5rem;
-            }
-            
-            h2 {
-                font-size: 1.5rem;
-            }
-            
-            button, #downloadButton {
-                padding: 0.9rem 1.5rem;
-                font-size: 1rem;
-                min-width: 180px;
-            }
-            
-            .logo {
-                max-width: 300px;
-            }
-            
-            .social-btn {
-                width: 45px;
-                height: 45px;
-                font-size: 1.3rem;
-            }
-            
-            .language-switcher {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.8rem;
-            }
-        }
     </style>
 </head>
 <body>
@@ -444,14 +322,9 @@
         <h2 id="mainHeading">عيد فطر سعيد | Happy Eid</h2>
         
         <div class="input-group">
-            <div class="input-container ar-label">
-                <label for="nameInputAr" id="arabicNameLabel">الاسم باللغة العربية</label>
-                <input id="nameInputAr" placeholder="اكتب اسمك هنا..." type="text" />
-            </div>
-            
             <div class="input-container">
-                <label for="nameInputEn" id="englishNameLabel">الاسم باللغة الإنجليزية</label>
-                <input id="nameInputEn" placeholder="Enter your name here..." type="text" />
+                <label for="nameInputAr" id="nameLabel">الاسم</label>
+                <input id="nameInputAr" placeholder="اكتب اسمك هنا..." type="text" />
             </div>
         </div>
         
@@ -464,7 +337,7 @@
         
         <div class="loading" id="loadingText">
             <div class="spinner"></div>
-            <span id="loadingTextSpan">جاري إنشاء التهنئة، الرجاء الانتظار...</span>
+            <span id="loadingTextSpan">جاري إنشاء التهنئة...</span>
         </div>
         
         <div class="result-container" id="resultContainer">
@@ -481,14 +354,11 @@
                     <span id="downloadButtonText">تحميل التهنئة</span>
                 </a>
                 
-                <div class="share-section">
-                    <div class="share-title" id="shareTitle">مشاركة التهنئة:</div>
-                    <div class="social-share">
-                        <a href="#" class="social-btn twitter" id="twitterShare"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-btn whatsapp" id="whatsappShare"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" class="social-btn facebook" id="facebookShare"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-btn telegram" id="telegramShare"><i class="fab fa-telegram-plane"></i></a>
-                    </div>
+                <div class="social-share">
+                    <a href="#" class="social-btn twitter" id="twitterShare"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-btn whatsapp" id="whatsappShare"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-btn facebook" id="facebookShare"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn telegram" id="telegramShare"><i class="fab fa-telegram-plane"></i></a>
                 </div>
             </div>
         </div>
@@ -496,266 +366,127 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // العناصر الرئيسية
             const nameInputAr = document.getElementById('nameInputAr');
-            const nameInputEn = document.getElementById('nameInputEn');
             const generateButton = document.getElementById('generateButton');
             const loadingText = document.getElementById('loadingText');
             const resultContainer = document.getElementById('resultContainer');
             const canvas = document.getElementById('greetingCanvas');
-            const downloadShareContainer = document.getElementById('downloadShareContainer');
             const downloadButton = document.getElementById('downloadButton');
             const ctx = canvas.getContext('2d');
             
-            // عناصر المشاركة الاجتماعية
-            const twitterShare = document.getElementById('twitterShare');
-            const whatsappShare = document.getElementById('whatsappShare');
-            const facebookShare = document.getElementById('facebookShare');
-            const telegramShare = document.getElementById('telegramShare');
-            
-            // عناصر تبديل اللغة
             const languageSwitcher = document.getElementById('languageSwitcher');
             const htmlElement = document.documentElement;
             
-            // نصوص للغة العربية
             const arabicTexts = {
                 heading: "عيد أضحى سعيد| Happy Eid",
-                arabicLabel: "الاسم باللغة العربية",
-                arabicPlaceholder: "اكتب اسمك هنا...",
-                englishLabel: "الاسم باللغة الإنجليزية",
-                englishPlaceholder: "Enter your name here...",
+                nameLabel: "الاسم",
+                placeholder: "اكتب اسمك هنا...",
                 generateButton: "إنشاء التهنئة",
                 loadingText: "جاري إنشاء التهنئة، الرجاء الانتظار...",
                 successMessage: "تم إنشاء تهنئتك بنجاح!",
                 downloadButton: "تحميل التهنئة",
-                shareTitle: "مشاركة التهنئة:",
-                switchToEnglish: "English",
-                switchToArabic: "العربية"
+                switchToEnglish: "English"
             };
             
-            // نصوص للغة الإنجليزية
             const englishTexts = {
-                heading: "عيد أضحى سعيد| Happy Eid",
-                arabicLabel: "Name in Arabic",
-                arabicPlaceholder: "Write your name in Arabic...",
-                englishLabel: "Name in English",
-                englishPlaceholder: "Write your name here...",
+                heading: "Happy Eid | عيد أضحى سعيد",
+                nameLabel: "Name",
+                placeholder: "Enter your name here...",
                 generateButton: "Generate Greeting",
                 loadingText: "Generating your greeting, please wait...",
-                successMessage: "Your greeting has been created successfully!",
+                successMessage: "Created successfully!",
                 downloadButton: "Download Greeting",
-                shareTitle: "Share Greeting:",
-                switchToEnglish: "English",
                 switchToArabic: "العربية"
             };
-            
-            // دالة لتحميل الخط
+
             async function loadFont() {
                 try {
-                    if (document.fonts.check('16px "Frutiger LT Arabic"')) {
-                        return true;
-                    }
-                    
                     const font = new FontFace('Frutiger LT Arabic', 'url(FrutigerLTArabic-Roman.ttf)');
                     await font.load();
                     document.fonts.add(font);
                     return true;
-                } catch (error) {
-                    console.error('خطأ في تحميل الخط:', error);
-                    return false;
-                }
+                } catch (e) { return false; }
             }
             
-            // دالة تبديل اللغة
             function toggleLanguage() {
                 const isArabic = htmlElement.getAttribute('dir') === 'rtl';
-                
                 if (isArabic) {
-                    // التبديل إلى الإنجليزية
                     htmlElement.setAttribute('dir', 'ltr');
                     htmlElement.setAttribute('lang', 'en');
-                    languageSwitcher.innerHTML = `<i class="fas fa-language"></i><span>${arabicTexts.switchToArabic}</span>`;
-                    
-                    // تحديث النصوص
+                    languageSwitcher.innerHTML = `<i class="fas fa-language"></i><span>${arabicTexts.switchToEnglish}</span>`;
                     updateTexts(englishTexts);
-                    
-                    // ضبط اتجاه النص للحقول
-                    nameInputAr.style.textAlign = 'right';
-                    nameInputEn.style.textAlign = 'left';
                 } else {
-                    // التبديل إلى العربية
                     htmlElement.setAttribute('dir', 'rtl');
                     htmlElement.setAttribute('lang', 'ar');
-                    languageSwitcher.innerHTML = `<i class="fas fa-language"></i><span>${englishTexts.switchToEnglish}</span>`;
-                    
-                    // تحديث النصوص
+                    languageSwitcher.innerHTML = `<i class="fas fa-language"></i><span>${englishTexts.switchToArabic}</span>`;
                     updateTexts(arabicTexts);
-                    
-                    // ضبط اتجاه النص للحقول
-                    nameInputAr.style.textAlign = 'right';
-                    nameInputEn.style.textAlign = 'left';
                 }
             }
             
-            // دالة لتحديث النصوص حسب اللغة
             function updateTexts(texts) {
                 document.getElementById('mainHeading').textContent = texts.heading;
-                document.getElementById('arabicNameLabel').textContent = texts.arabicLabel;
-                document.getElementById('nameInputAr').placeholder = texts.arabicPlaceholder;
-                document.getElementById('englishNameLabel').textContent = texts.englishLabel;
-                document.getElementById('nameInputEn').placeholder = texts.englishPlaceholder;
+                document.getElementById('nameLabel').textContent = texts.nameLabel;
+                nameInputAr.placeholder = texts.placeholder;
                 document.getElementById('generateButtonText').textContent = texts.generateButton;
                 document.getElementById('loadingTextSpan').textContent = texts.loadingText;
                 document.getElementById('successMessage').textContent = texts.successMessage;
                 document.getElementById('downloadButtonText').textContent = texts.downloadButton;
-                document.getElementById('shareTitle').textContent = texts.shareTitle;
             }
             
-            // دالة إنشاء البطاقة
             async function generateCard() {
-                const nameAr = nameInputAr.value.trim();
-                const nameEn = nameInputEn.value.trim();
-                
-                if (!nameAr && !nameEn) {
-                    showError(htmlElement.getAttribute('dir') === 'rtl' ? 
-                        'الرجاء إدخال الاسم على الأقل في أحد الحقلين' : 
-                        'Please enter your name in at least one field');
-                    nameInputAr.focus();
+                const name = nameInputAr.value.trim();
+                if (!name) {
+                    alert(htmlElement.getAttribute('dir') === 'rtl' ? 'الرجاء إدخال الاسم' : 'Please enter your name');
                     return;
                 }
                 
-                // إظهار حالة التحميل
                 loadingText.style.display = "flex";
                 resultContainer.style.display = "none";
-                canvas.style.display = "none";
-                downloadShareContainer.style.display = "none";
                 
                 try {
-                    // تحميل الخط
-                    const fontLoaded = await loadFont();
-                    
-                    // إنشاء الصورة
+                    await loadFont();
                     const img = new Image();
                     img.crossOrigin = "anonymous";
                     img.src = "https://i.ibb.co/HDQysFDV/Updated-C-level-E-greeting-Card-jpg.jpg";
                     
-                    await new Promise((resolve, reject) => {
-                        img.onload = resolve;
-                        img.onerror = () => reject(new Error('فشل تحميل الصورة'));
+                    await new Promise((res, rej) => {
+                        img.onload = res;
+                        img.onerror = rej;
                     });
                     
                     canvas.width = img.width;
                     canvas.height = img.height;
                     ctx.drawImage(img, 0, 0);
                     
-                    // استخدام الخط المحمل أو خط بديل
-                    const fontStyle = fontLoaded ? "'Frutiger LT Arabic'" : "Arial";
+                    ctx.font = "90px 'Frutiger LT Arabic', Arial";
+                    ctx.fillStyle = "#FFFFFF";
+                    ctx.textAlign = "center";
+                    ctx.fillText(name, canvas.width / 2, 2430);
                     
-                    // كتابة الاسم العربي
-                    if (nameAr) {
-                        ctx.font = `90px ${fontStyle}`;
-                        ctx.fillStyle = "#FFFFFF";
-                        ctx.textAlign = "center";
-                        ctx.textBaseline = "middle";
-                        ctx.fillText(nameAr, canvas.width / 2, 2430);
-                    }
-                    
-                    // كتابة الاسم الإنجليزي
-                    if (nameEn) {
-                        ctx.font = `40px ${fontStyle}`;
-                        ctx.fillStyle = "#FFFFFF";
-                        ctx.textAlign = "center";
-                        ctx.textBaseline = "middle";
-                        ctx.fillText(nameEn, canvas.width / 2, 1665);
-                    }
-                    
-                    // إعداد روابط المشاركة
-                    setupShareLinks(nameAr || nameEn);
-                    
-                    // إظهار النتيجة
                     canvas.style.display = "block";
                     downloadButton.href = canvas.toDataURL('image/png');
-                    downloadShareContainer.style.display = "flex";
                     resultContainer.style.display = "block";
                     
-                    // التمرير إلى النتيجة
-                    setTimeout(() => {
-                        resultContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }, 100);
+                    setupShareLinks(name);
                 } catch (error) {
-                    console.error('حدث خطأ:', error);
-                    showError(htmlElement.getAttribute('dir') === 'rtl' ? 
-                        'حدث خطأ أثناء إنشاء التهنئة. الرجاء المحاولة مرة أخرى.' : 
-                        'An error occurred while generating the greeting. Please try again.');
+                    console.error(error);
                 } finally {
                     loadingText.style.display = "none";
                 }
             }
             
-            // دالة لإعداد روابط المشاركة
             function setupShareLinks(name) {
-                const imageDataUrl = canvas.toDataURL('image/png');
-                const isArabic = htmlElement.getAttribute('dir') === 'rtl';
-                const shareText = isArabic ? 
-                    `تهنئة عيد سعيدة من ${name} عبر العقارية! 🎉` : 
-                    `Happy Eid greetings from ${name} via Waves! 🎉`;
+                const shareText = `تهنئة من ${name} عبر العقارية! 🎉`;
                 const shareUrl = window.location.href;
-                
-                // تويتر
-                twitterShare.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
-                
-                // واتساب
-                whatsappShare.href = `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`;
-                
-                // فيسبوك
-                facebookShare.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
-                
-                // تليجرام
-                telegramShare.href = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`;
-                
-                // فتح النوافذ في صفحة جديدة
-                [twitterShare, whatsappShare, facebookShare, telegramShare].forEach(btn => {
-                    btn.target = '_blank';
-                    btn.rel = 'noopener noreferrer';
-                });
+                document.getElementById('twitterShare').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+                document.getElementById('whatsappShare').href = `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`;
+                document.getElementById('facebookShare').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+                document.getElementById('telegramShare').href = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`;
             }
             
-            // دالة لعرض رسالة الخطأ
-            function showError(message) {
-                const errorElement = document.createElement('div');
-                errorElement.className = 'success-message';
-                errorElement.style.backgroundColor = 'rgba(231, 76, 60, 0.1)';
-                errorElement.style.color = 'var(--accent-color)';
-                errorElement.innerHTML = `<span>✕</span><span>${message}</span>`;
-                
-                const buttonContainer = document.querySelector('.button-container');
-                buttonContainer.appendChild(errorElement);
-                
-                setTimeout(() => {
-                    errorElement.style.opacity = '0';
-                    setTimeout(() => errorElement.remove(), 300);
-                }, 3000);
-            }
-            
-            // إضافة event listeners
             generateButton.addEventListener('click', generateCard);
             languageSwitcher.addEventListener('click', toggleLanguage);
-            
-            // تفعيل الزر عند الضغط على Enter في أي حقل
-            [nameInputAr, nameInputEn].forEach(input => {
-                input.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        generateCard();
-                    }
-                });
-            });
-            
-            // ضبط اتجاه النص الأولي للحقول
-            nameInputAr.style.textAlign = 'right';
-            nameInputEn.style.textAlign = 'left';
-            
-            // تحميل الخط مسبقاً عند دخول الصفحة
-            loadFont().catch(e => console.log('تحميل الخط المسبق:', e.message));
+            nameInputAr.addEventListener('keypress', (e) => e.key === 'Enter' && generateCard());
         });
     </script>
 </body>
